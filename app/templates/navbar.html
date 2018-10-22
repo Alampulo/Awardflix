@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+
+ 
+
+<div class="row" style="border-bottom: 1px solid grey; background: maroon;" id="navbar">
+  <div class="col-2" >
+<!-- Sidebar -->
+<div class="w3-sidebar w3-bar-block w3-animate-left" style="z-index:5; background:whitesmoke;" id="mySidebar">
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzcaSgJnq6bKQ3Kmhln7ItAKl0n4wW3gSQakaJBkqIezNPjR00KA" style="width: 200px; height: 300px;"  alt=" ">
+  <button class="w3-bar-item w3-button w3-large" onclick="w3_close()">Exit </button>
+  <a href="/" class="w3-bar-item w3-button w3-border-bottom" >Home</a>
+  <a href="{% url 'add_profile' %}" class="w3-bar-item w3-button w3-border-bottom">Add Profile</a>
+  <a href="{% url 'upload' %}" class="w3-bar-item w3-button w3-border-bottom">Add Project</a>
+  <a href="/logout" class="w3-bar-item w3-button w3-border-bottom">Log Out</a>
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSyYsZogRg88LCL8uUq90lt2LWOpZnaVqa5qo3I6FVRwJinP73C" style="height: 200px;" alt="">
+
+ 
+</div>
+
+<!-- Page Content -->
+<div class="w3-overlay w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay"></div>
+
+<div>
+  <button class="w3-button w3-white w3-xxlarge" onclick="w3_open()">&#9776;</button>
+  </div>
+
+<script>
+function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
+}
+function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+    document.getElementById("myOverlay").style.display = "none";
+}
+</script>
+</div>
+<div class="col-3" style="text-align:left; margin-top: 25px;">
+  <form class="form-inline mx-auto" role="search" action="{% url 'search_results' %}" method="get">
+          <div class="form-group">
+            <input type="text" class="form-control-lg" role="search" placeholder="search project" aria-label="Search" style="max-width: 1000px; margin-top: 20px;" name="title">
+          </div>
+        </form>
+
+</div>
+<div class="col-5">
+<h5 style="text-transform: uppercase; margin-top: 30px; margin-bottom:0px">
+ 
+</div>
+
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrhawJkKgAyDtBGihLcw51w-Kl3JpsTnmvLzCaxxZEXjAeS4sYZA" style="width: 100px; height: 150px; margin-top: 5px; margin-bottom: 5px;" alt="">
+<p> <a class="nav-link" href="#" title="User"style="  margin-top:-40px; padding-left:300px; font-size:30px; " >{{user}}</a></p>
+</div>
+<script>
+  window.onscroll = function() {myFunction()};
+
+  var navbar = document.getElementById("navbar");
+  var sticky = navbar.offsetTop;
+
+  function myFunction() {
+    if (window.pageYOffset >= sticky) {
+      navbar.classList.add("sticky")
+    } else {
+      navbar.classList.remove("sticky");
+    }
+  }
+  </script>
+<body>
+
+
+
+</body>
+
+</html>
