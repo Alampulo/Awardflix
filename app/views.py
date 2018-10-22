@@ -9,9 +9,7 @@ from rest_framework.views import APIView
 from .serializer import *
 from rest_framework import status
 from .permissions import IsAdminOrReadOnly
-# Create your views here.
 
-# @login_required(login_url='/accounts/login/')
 def home(request):
     projects = Project.get_projects()
     reviews = Reviews.get_reviews()
@@ -56,7 +54,7 @@ def add_profile(request):
             profile.user = current_user
             profile.save()
         return redirect('home')
-
+    
     else:
         form = NewProfileForm()
     return render(request, 'new_profile.html', {"form": form})
@@ -125,8 +123,6 @@ def all(request, pk):
     }
     return render(request, 'profile.html', content)
 
-
-
 class ProfileDescription(APIView):
     permission_classes = (IsAdminOrReadOnly,)
     def get_profile(self, pk):
@@ -183,8 +179,6 @@ class ProjectList(APIView):
             serializers.save()
             return Response(serializers.data, status=status.HTTP_201_CREATED)
         return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
 
 class ProjectDescription(APIView):
     permission_classes = (IsAdminOrReadOnly,)
