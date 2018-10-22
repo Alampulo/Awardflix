@@ -3,7 +3,7 @@ A web  application that will allow a user to post a project he/she has created a
 
 
 ## User Stories
-These are the behaviours/features that the application implements for use by a user.
+These are the behaviours awardflix  implements for  a user.
 
 Users would like to:
 * View all projects submitted by any user.
@@ -15,7 +15,7 @@ Users would like to:
 
 
 ## Admin Abilities
-These are the behaviours/features that the application implements for use by the admin.
+These are the features that the application implements for use by the admin.
 
 Admin should:
 * Sign in to the application
@@ -48,8 +48,8 @@ Admin should:
 ### Cloning
 * In your terminal:
 
-        $ git clone https://github.com/emdeechege/Instrapicha
-        $ cd Awards
+        $ git clone https://github.com/alampulo
+        $ cd Awardflix
 
 ## Running the Application
 * Creating the virtual environment
