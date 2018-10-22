@@ -1,1 +1,1 @@
-web: gunicorn crown.wsgi
+web: gunicorn project.wsgi
