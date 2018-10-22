@@ -125,6 +125,21 @@ def all(request, pk):
     }
     return render(request, 'profile.html', content)
 
+
+
+class ProfileDescription(APIView):
+    permission_classes = (IsAdminOrReadOnly,)
+    def get_profile(self, pk):
+        try:
+            return Profile.objects.get(pk=pk)
+        except Profile.DoesNotExist:
+            return Http404
+
+    def get(self, request, pk, format=None):
+        profile = self.get_profile(pk)
+        serializers = ProfileSerializer(profile)
+        return Response(serializers.data)
+
 class ProfileList(APIView):
 
     def get(self, request, format=None):
@@ -139,19 +154,6 @@ class ProfileList(APIView):
             serializers.save()
             return Response(serializers.data, status=status.HTTP_201_CREATED)
         return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
-
-class ProfileDescription(APIView):
-    permission_classes = (IsAdminOrReadOnly,)
-    def get_profile(self, pk):
-        try:
-            return Profile.objects.get(pk=pk)
-        except Profile.DoesNotExist:
-            return Http404
-
-    def get(self, request, pk, format=None):
-        profile = self.get_profile(pk)
-        serializers = ProfileSerializer(profile)
-        return Response(serializers.data)
 
     def put(self, request, pk, format=None):
         profile = self.get_profile(pk)
@@ -197,6 +199,12 @@ class ProjectDescription(APIView):
         serializers = ProjectSerializer(project)
         return Response(serializers.data)
 
+  
+    def delete(self, request, pk, format=None):
+        project = self.get_project(pk)
+        project.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
     def put(self, request, pk, format=None):
         project = self.get_project(pk)
         serializers = ProjectSerializer(project, request.data)
@@ -205,8 +213,3 @@ class ProjectDescription(APIView):
             return Response(serializers.data)
         else:
             return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    def delete(self, request, pk, format=None):
-        project = self.get_project(pk)
-        project.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
