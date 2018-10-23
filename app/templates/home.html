@@ -28,8 +28,10 @@ width: 100px;">
 
             </div>
             <div class="media-body">
-              <h4 class="media-heading" style="padding:10px; margin:5px">{{ project.title }}</h4>
-              <h6 class="media-content" style="padding:10px; margin:5px">{{ project.description }}</h6>
+              <h4 class="media-heading" style="padding:10px;  max-width:60rem; margin:5px">{{ project.title }}</h4>
+              <h6 class="media-content" style="padding:10px; height:30px; margin-top:30px; margin:5px">{{ project.description }}</h6>
+
+              
               <!-- <button class=" one d-flex justify-content-end" style="float:right; padding:10px; margin:5px">Votes {{ project.reviews.count| floatformat  }}</button> -->
               <button class=" two d-flex justify-content-end" style="float:right; padding:10px; margin:5px">design {{ project.design_rating| floatformat  }}</button>
               <button class=" three d-flex justify-content-end" style="float:right; padding:10px; margin:5px">usability {{ project.usability_rating| floatformat  }}</button>
