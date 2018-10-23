@@ -72,7 +72,7 @@ class Reviews(models.Model):
         (9, '9'),
         (10, '10'),
     )
-    # juror = models.ForeignKey(User, on_delete=models.CASCADE,null=True)
+    juror = models.ForeignKey(User, on_delete=models.CASCADE,null=True)
     project = models.ForeignKey(Project,on_delete=models.CASCADE, related_name='reviews',null=True)
     design = models.IntegerField(choices=RATING_CHOICES,default=0)
     usability = models.IntegerField(choices=RATING_CHOICES,default=0)
