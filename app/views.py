@@ -123,6 +123,7 @@ def all(request, pk):
     }
     return render(request, 'profile.html', content)
 
+
 class ProfileDescription(APIView):
     permission_classes = (IsAdminOrReadOnly,)
     def get_profile(self, pk):
